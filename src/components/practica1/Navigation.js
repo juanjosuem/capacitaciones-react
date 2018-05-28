@@ -6,12 +6,16 @@ import { Grid, Navbar,Nav,NavItem,NavDropdown,MenuItem, Button, FormGroup , Form
 class Navigation extends Component {
 
 	render() {
+const className = ' menu-active';
+
 		return (
+			<div>
 			<Navbar inverse fixedTop>
 				<Grid>
+				<span >ICONO</span>
 					<Navbar.Header>
 						<Navbar.Brand>
-							<img src={logo} className="App-logo" alt="logo" />
+							<img src={logo} className={className} alt="logo" />
 						</Navbar.Brand>
 						<Navbar.Toggle />
 					</Navbar.Header>
@@ -39,7 +43,7 @@ class Navigation extends Component {
 					 </Navbar.Form>
 				 </Navbar.Collapse>
 				</Grid>
-			</Navbar>
+			</Navbar></div>
 		)
 	}
 
