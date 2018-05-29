@@ -7,7 +7,7 @@ class App extends Component {
   
   
   static defaultProps={
-    cantidad:300  
+    cantidad:500  
   };
 
   static propTypes={
