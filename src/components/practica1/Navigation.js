@@ -6,8 +6,46 @@ import { Grid, Navbar,Nav,NavItem,NavDropdown,MenuItem, Button, FormGroup , Form
 class Navigation extends Component {
 
 	render() {
-const className = ' menu-active';
+		const className = ' menu-active';
+		const json = [
+		  { type: 'link', text: 'Home', url: '#' },
+		  { type: 'link', text: 'About Us', url: '#' },
+		  {
+		    type: 'dropdown',
+		    text: 'Functions',
+		    links: [
+		      { type: 'link', text: 'Function 1', url: '#' },
+		      { type: 'link', text: 'Function 2', url: '#' },
+		      { type: 'link', text: 'Function 3', url: '#' },
+		    ]
+		  },
+		];
+		function DinamicNav(props) {
+			const content = props.json.map((item) =>
+			<NavDropdown eventKey={3} title={item.text} id="basic-nav-dropdown">
+			{item.text == 'Functions' ? (
+					item.links.map((sub) =>
+						<MenuItem eventKey={3.2}>
+						{sub.text}
+						</MenuItem>)
+			) :<MenuItem eventKey={3.4}>Separated link</MenuItem>}
 
+			</NavDropdown>
+
+			);
+
+			return (
+				<Nav>
+					<NavItem eventKey={1} href="#">
+						Link
+					</NavItem>
+					<NavItem eventKey={2} href="#">
+						Link
+					</NavItem>
+				 {content}
+			 </Nav>
+			);
+		}
 		return (
 			<div>
 			<Navbar inverse fixedTop>
@@ -19,21 +57,7 @@ const className = ' menu-active';
 						</Navbar.Brand>
 						<Navbar.Toggle />
 					</Navbar.Header>
-					<Nav>
-					 <NavItem eventKey={1} href="#">
-						 Link
-					 </NavItem>
-					 <NavItem eventKey={2} href="#">
-						 Link
-					 </NavItem>
-					 <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-						 <MenuItem eventKey={3.1}>Action</MenuItem>
-						 <MenuItem eventKey={3.2}>Another action</MenuItem>
-						 <MenuItem eventKey={3.3}>Something else here</MenuItem>
-						 <MenuItem divider />
-						 <MenuItem eventKey={3.4}>Separated link</MenuItem>
-					 </NavDropdown>
-				 </Nav>
+				 <DinamicNav json={json} />
 				 <Navbar.Collapse>
 					 <Navbar.Form pullLeft>
 						 <FormGroup>
