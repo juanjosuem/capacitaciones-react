@@ -47,7 +47,7 @@ class Navigation extends Component {
 				<NavItem href="#">
 					Link
 				</NavItem>
-			 --{content}
+			 {content}
 		 </Nav>
 		)
 	}
@@ -69,7 +69,7 @@ class Navigation extends Component {
 					 <Navbar.Form pullLeft>
 						 <FormGroup>
 							 <FormControl type="text" placeholder="Search" />
-						 </FormGroup>{' '}
+						 </FormGroup>
 						 <Button type="submit">Submit</Button>
 					 </Navbar.Form>
 				 </Navbar.Collapse>
