@@ -8,27 +8,28 @@ class Navigation extends Component {
 	render() {
 		const className = ' menu-active';
 		const json = [
-		  { type: 'link', text: 'Home', url: '#' },
-		  { type: 'link', text: 'About Us', url: '#' },
+		  { id: 33, type: 'link', text: 'Home', url: '#' },
+		  { id: 44, type: 'link', text: 'About Us', url: '#' },
 		  {
-		    type: 'dropdown',
+				id: 55,
+				type: 'dropdown',
 		    text: 'Functions',
 		    links: [
-		      { type: 'link', text: 'Function 1', url: '#' },
-		      { type: 'link', text: 'Function 2', url: '#' },
-		      { type: 'link', text: 'Function 3', url: '#' },
+		      { id: 6, type: 'link', text: 'Function 1', url: '#' },
+		      { id: 7, type: 'link', text: 'Function 2', url: '#' },
+		      { id: 8, type: 'link', text: 'Function 3', url: '#' },
 		    ]
 		  },
 		];
 		function DinamicNav(props) {
 			const content = props.json.map((item) =>
-			<NavDropdown eventKey={3} title={item.text} id="basic-nav-dropdown">
-			{item.text == 'Functions' ? (
-					item.links.map((sub) =>
-						<MenuItem eventKey={3.2}>
+			<NavDropdown key={item.id} title={item.text} id="basic-nav-dropdown">
+			{item.text === 'Functions' ? (
+					item.links.map((sub, index) =>
+						<MenuItem key={index}>
 						{sub.text}
 						</MenuItem>)
-			) :<MenuItem eventKey={3.4}>Separated link</MenuItem>}
+			) :<MenuItem eventKey={item.id}>Separated link</MenuItem>}
 
 			</NavDropdown>
 
@@ -36,10 +37,10 @@ class Navigation extends Component {
 
 			return (
 				<Nav>
-					<NavItem eventKey={1} href="#">
+					<NavItem href="#">
 						Link
 					</NavItem>
-					<NavItem eventKey={2} href="#">
+					<NavItem href="#">
 						Link
 					</NavItem>
 				 {content}
