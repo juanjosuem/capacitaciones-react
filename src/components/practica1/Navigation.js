@@ -6,7 +6,7 @@ import { Grid, Navbar,Nav,NavItem,NavDropdown,MenuItem, Button, FormGroup , Form
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
-		this.renderDisplay = this.renderDisplay.bind(this);
+		this.renderNav = this.renderNav.bind(this);
 		const className = ' menu-active';
 		this.className = className;
 		const json = [
@@ -24,11 +24,10 @@ class Navigation extends Component {
 			},
 		];
 		this.json = json;
-
 	}
 
-	renderDisplay() {
-		const content = this.props.json.map((item) =>
+	renderNav() {
+		const content = this.json.map((item) =>
 		<NavDropdown key={item.id} title={item.text} id="basic-nav-dropdown">
 		{item.text === 'Functions' ? (
 				item.links.map((sub, index) =>
@@ -41,7 +40,6 @@ class Navigation extends Component {
 
 		);
 		return (
-
 			<Nav>
 				<NavItem href="#">
 					Link
@@ -49,7 +47,7 @@ class Navigation extends Component {
 				<NavItem href="#">
 					Link
 				</NavItem>
-			 {content}
+			 --{content}
 		 </Nav>
 		)
 	}
@@ -66,7 +64,7 @@ class Navigation extends Component {
 						</Navbar.Brand>
 						<Navbar.Toggle />
 					</Navbar.Header>
-				 this.renderDisplay()
+				 {this.renderNav()}
 				 <Navbar.Collapse>
 					 <Navbar.Form pullLeft>
 						 <FormGroup>
