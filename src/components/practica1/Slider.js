@@ -12,16 +12,23 @@ class Slider extends Component {
 			{id: 3, image: 'https://media.gettyimages.com/photos/give-yourself-a-green-light-picture-id477694912',title: 'Lluvia en la ciudad', content: 'Lluvia en Tokyo'}
 		];
 		this.posts = posts;
-
+		this.state = {
+			posts: [
+				{
+					id: 1,
+					image: 'https://source.unsplash.com/collection/1163637/900x500/?sig=12345667'
+				}
+			]
+		};
 	}
 
 	Blog() {
-		const content = this.posts.map((post) =>
+		const content = this.state.posts.map((post) =>
 			<Carousel.Item key={post.id}>
 				<img width={900} height={500} alt="900x500" src={post.image} />
 				<Carousel.Caption>
 					<h3>{post.title}</h3>
-					<p>post.content</p>
+					<p>{post.content}</p>
 				</Carousel.Caption>
 			</Carousel.Item>
 		);
@@ -33,6 +40,23 @@ class Slider extends Component {
 	}
 
 	render() {
+
+		if (this.state.posts.length < 10) {
+			setTimeout(()=>{
+				this.setState({
+					posts:[
+						...this.state.posts,
+						{
+							id: Math.floor(Math.random() * 1000),
+							image:`https://source.unsplash.com/collection/1163637/900x500/?sig=${Math.floor(Math.random() * 1000)}`
+						}
+					]
+				});
+			},4000);
+		}
+
+
+
     return (this.Blog())
 	}
 
